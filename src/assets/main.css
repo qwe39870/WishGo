@@ -1,0 +1,124 @@
+/* @import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+} */
+
+
+/* Toast的部分 */
+/* 彩色玻璃背景 + 閃爍動畫 */
+.glass-toast {
+  background: rgb(255, 73, 73);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 0 5px #464545 !important;
+  position: 'bottom-right';
+
+  /* 漸層閃爍色彩 */
+  background: linear-gradient(45deg,
+  #f9a8d4, #c084fc, #a5f3fc
+
+    ) !important;
+
+  background-size: 400% 400%;
+
+  animation: shimmer 3s ease-in-out infinite;
+  box-shadow:
+    0 0 8px rgba(255, 0, 150, 0.8),
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 0, 0.8),
+    0 0 25px rgba(0, 255, 150, 0.8);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* SweetAlert2的部分 */
+.glass-alert {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(66, 10, 10, 0.3);
+  box-shadow: 0 8px 32px #925555;
+  border-radius: 20px;
+  color: #ff80ab;
+
+}
+
+.swal2-confirm {
+  background-color: #a78bfa !important;
+  color: white !important;
+  font-weight: bold;
+  border: none;
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.2); */
+}
+
+.swal2-confirm:hover {
+  background-color: #8670ca !important;
+  color: white !important;
+
+}
+
+.pink-spinner {
+  border: 6px solid #ffe6ef;
+  border-top: 6px solid #f06292;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
