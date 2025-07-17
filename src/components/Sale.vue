@@ -102,7 +102,8 @@ const productToday = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get('/categories/saleType/限時搶購');
+    const type = encodeURIComponent("限時搶購");
+    const response = await axios.get(‵/categories/saleType/${type});
     const allItems = response.data.data || [];
 
     // ✅ 隨機打亂並取前六筆
@@ -118,7 +119,8 @@ onMounted(async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('/categories/saleType/今日熱銷');
+    const type = encodeURIComponent("今日熱銷");
+    const response = await axios.get(‵/categories/saleType/今日熱銷‵);
     const allItems = response.data.data || [];
 
     // ✅ 隨機打亂並取前六筆
