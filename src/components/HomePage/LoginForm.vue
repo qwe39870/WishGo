@@ -75,7 +75,9 @@ const apiUrl = import.meta.env.VITE_API_URL
 async function onGoogleLogin() {
     console.log("Google登入被按了");
     // console.log(apiUrl);
-    window.location.href = 'https://5def834ceef2.ngrok-free.app/youbike/oauth2/authorization/google';
+    // window.location.href = 'http://localhost:7010/youbike/oauth2/authorization/google';
+    window.location.href = 'https://b3a4b2522b39.ngrok-free.app/youbike/oauth2/authorization/google';
+    // window.location.href = 'https://5def834ceef2.ngrok-free.app/youbike/oauth2/authorization/google';
 
 }
 </script>

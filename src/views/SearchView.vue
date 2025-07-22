@@ -23,7 +23,7 @@
             <!-- 圖片區塊 -->
             <div class="relative w-full h-40 overflow-hidden rounded-xl">
               <img v-if="item.imageIds && item.imageIds.length"
-                :src="`http://localhost:7010/youbike/images/${item.imageIds[0]}`" alt="商品圖片"
+                :src="`${apiUrl}/images/${item.imageIds[0]}`" alt="商品圖片"
                 class="w-full h-full object-contain rounded-xl transition duration-300" />
 
               <img v-else src="/image/no-image.jpg" alt="預設圖" class="w-full h-full object-contain" />
@@ -133,6 +133,8 @@ import { useFavoriteStore } from '@/stores/favorite.js';
 import supportChat from '@/components/support-chat.vue';
 import Footer from '@/components/Footer.vue';
 import MegaCategoryMenu from '@/components/MegaCategoryMenu.vue';
+
+const apiUrl = import.meta.env.VITE_API_URL
 
 const toast = useToast()
 

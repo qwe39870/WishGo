@@ -14,6 +14,11 @@ function close() {
     emit('close')
 }
 
+function handleLoginSuccess() {
+  emit('login-success')
+  emit('close') // ✅ 登入成功自動關閉 modal
+}
+
 
 
 // function closeModal() {
@@ -33,7 +38,7 @@ function close() {
                 class="absolute top-2 right-2 text-pink-500 hover:text-pink-700 text-xl font-bold">&times;</button>
 
             <h2 class="text-2xl font-bold text-pink-600 text-center">🌸 WishGo</h2>
-            <p class="text-pink-700"><LoginForm @close="close" @login-success="emit('login-success')" /></p>
+            <p class="text-pink-700"><LoginForm @close="close" @login-success="handleLoginSuccess" /></p>
 
             <!-- <div class="mt-6 text-right">
                 <button @click="close"

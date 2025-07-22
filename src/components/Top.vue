@@ -28,7 +28,7 @@
             <div v-for="item in recentlyViewed.slice(0, 3)" :key="item.productId"
                 class="flex items-center p-1 bg-white cursor-pointer border hover:bg-purple-100 transition"
                 @click="goDetail(item)">
-                <img :src="`http://localhost:7010/youbike/images/${item.productId}`"
+                <img :src="`${apiUrl}/images/${item.productId}`"
                     class="w-12 h-12 object-contain rounded mx-auto" alt="商品圖" />
 
             </div>
@@ -73,7 +73,7 @@ function goDetail(item) {
     window.open(`/products/${item.productId}`, '_blank')
 }
 
-
+const apiUrl = import.meta.env.VITE_API_URL
 
 const showLimitedOffer = ref(false)
 const showHistory = ref(false)

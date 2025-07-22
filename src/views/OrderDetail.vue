@@ -5,7 +5,7 @@ import StoreSelector from '@/components/StoreSelector.vue'
 
 
 async function goToPayment() {
-    const res = await axios.post('http://localhost:7010/youbike/ecpay/test', null, {
+    const res = await axios.post('/ecpay/test', null, {
         params: {
             orderId: 'ORDER001',
             amount: 200

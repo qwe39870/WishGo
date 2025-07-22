@@ -76,7 +76,7 @@ function showMagicGlassAlert() {
 
   <Sale />
   <ProductCard />
-  <CategorySelector />
+  <!-- <CategorySelector /> -->
   <Card />
   <Discount />
 

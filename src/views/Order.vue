@@ -33,7 +33,7 @@ async function goToPayment() {
                 class="flex items-center mb-4 bg-pink-50 p-4 rounded-xl shadow-sm relative">
 
                 <!-- 商品圖片 -->
-                <img :src="`http://localhost:7010/youbike/images/${item.productId}`" alt="商品圖片"
+                <img :src="`${apiUrl}/images/${item.productId}`" alt="商品圖片"
                     class="w-20 h-20 rounded-md object-cover mr-4" />
 
                 <!-- 商品資訊 + 數量調整 -->
@@ -98,7 +98,7 @@ import Categories from '@/components/Categories.vue'
 import axios from '@/plugins/axios.js'
 
 
-
+const apiUrl = import.meta.env.VITE_API_URL
 
 const cartStore = useCartStore()
 const userStore = useUserStore()
@@ -179,7 +179,7 @@ async function confirmOrder() {
         }
 
         const res = await axios.post(
-            'http://localhost:7010/youbike/orders/create',
+            '/orders/create',
             payload,
             {
                 headers: {
@@ -202,9 +202,11 @@ async function confirmOrder() {
 
 
         if (method === 'CREDIT_CARD') {
+            cartStore.clearCart()
             goToPayment(res.data.orderId, res.data.totalAmount)
         } else {
             await Swal.fire('訂單已送出 ✨', '', 'success')
+            cartStore.clearCart()
             router.push('/orderdetail')
         }
     } catch (err) {
@@ -217,13 +219,14 @@ async function confirmOrder() {
 
 async function goToPayment(orderId, amount) {
     try {
-        const res = await axios.post('http://localhost:7010/youbike/ecpay/test', null, {
+        const res = await axios.post('/ecpay/test', null, {
             params: {
                 orderId,
                 amount
             }
         })
 
+        
         const container = document.createElement('div')
         container.innerHTML = res.data
         document.body.appendChild(container)

@@ -23,7 +23,7 @@
 
                                     <h3 class="text-base font-semibold text-pink-700 truncate">{{ item.productName }}</h3>
                                     <div class="flex items-center gap-2 mt-1 text-sm">
-                                        <p class="text-pink-500 text-xs line-through">${{ item.original }}</p>
+                                        <p class="text-pink-500 text-xs line-through">{{ item.original }}</p>
                                         <p class="text-pink-600 text-lg font-bold">${{ item.price }}</p>
                                     </div>
 
@@ -63,7 +63,7 @@
 
                                     <h3 class="text-base font-semibold text-pink-700 truncate">{{ item.productName }}</h3>
                                     <div class="flex items-center gap-2 mt-1 text-sm">
-                                        <p class="text-pink-500 text-xs line-through">${{ item.original }}</p>
+                                        <p class="text-pink-500 text-xs line-through">{{ item.original }}</p>
                                         <p class="text-pink-600 text-lg font-bold">${{ item.price }}</p>
                                     </div>
 
@@ -103,6 +103,7 @@ const productToday = ref([]);
 onMounted(async () => {
   try {
     const response = await axios.get('/categories/saleType/限時搶購');
+    console.log("限時搶購"+response.data);
     const allItems = response.data;
 
     // ✅ 隨機打亂並取前六筆

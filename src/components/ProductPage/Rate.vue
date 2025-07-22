@@ -242,7 +242,7 @@ const addComment = async () => {
     const token = userStore.token
 
     const response = await axios.post(
-      'http://localhost:7010/youbike/reviews',
+      '/reviews',
       {
         productId: productId, // 🔥 要傳入你目前的商品 ID
         comments: newText.value,
@@ -295,9 +295,11 @@ const addComment = async () => {
   }
 }
 
+const apiUrl = import.meta.env.VITE_API_URL
+
 const toggleLike = async (comment) => {
   const reviewId = comment.reviewId
-  const url = `http://localhost:7010/youbike/reviews/${reviewId}/like`
+  const url = `${apiUrl}/reviews/${reviewId}/like`
   const headers = {
     Authorization: `Bearer ${userStore.token}`
   }

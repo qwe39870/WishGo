@@ -22,7 +22,7 @@
                         <div v-for="item in favoriteStore.favoriteItems" :key="item.productId"
                             class="flex items-start justify-between bg-pink-50 p-3 rounded-xl shadow-sm">
                             <div class="flex items-center gap-3">
-                                <img :src="`http://localhost:7010/youbike/images/${item.productId}`"
+                                <img :src="`${apiUrl}/images/${item.productId}`"
                                     class="w-14 h-14 rounded-md object-cover" />
                                 <div class="flex flex-col">
                                     <p class="text-pink-700 font-medium truncate max-w-[10rem]">{{ item.productName }}</p>
@@ -60,7 +60,7 @@ import { useCartStore } from '@/stores/cart.js'
 import { useUserStore } from '@/stores/user'
 import axios from '@/plugins/axios.js'
 import { useToast } from 'vue-toastification'
-
+const apiUrl = import.meta.env.VITE_API_URL
 const isOpen = ref(false)
 const isMinimized = ref(false)
 const favoriteStore = useFavoriteStore()

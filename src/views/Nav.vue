@@ -31,7 +31,9 @@
             <div class="flex items-center space-x-4">
                 <!-- 導覽列 -->
                 <ul class="hidden md:flex space-x-4 font-semibold text-pink-900">
-                    <li><a href="#" class="hover:text-white transition">訂單</a></li>
+                    <li>
+                        <a href="#" @click.prevent="openOrder" class="hover:text-white transition">訂單</a>
+                    </li>
                     <li>
                         <a href="#" @click.prevent="openFavoriteModal" class="hover:text-white transition">
                             收藏
@@ -47,7 +49,7 @@
 
                     <!-- <CartSidebar ref="cartSidebarRef" /> -->
 
-                    
+
 
                 </ul>
 
@@ -78,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, onMounted,inject } from 'vue'
+import { ref, defineProps, onMounted, inject } from 'vue'
 import PinkModal from '@/components/HomePage/PinkModal.vue'
 import { useRouter } from 'vue-router'
 import axios from '@/plugins/axios.js'
@@ -116,7 +118,7 @@ const favoriteStore = useFavoriteStore();
 function handleCartClose() {
     // cartVisible.value = false
     // isPinned.value = false  // 🔧 關閉時同步重設 isPinned
-    
+
 }
 
 // const cartSidebarRef = ref(null)
@@ -130,27 +132,31 @@ const pinCart = inject('pinCart')
 const unpinCart = inject('unpinCart')
 
 function handleMouseEnter() {
-  if (!userStore.isLogin) return
-  openCart()
+    if (!userStore.isLogin) return
+    openCart()
 }
 
 function handleMouseLeave() {
-  if (!userStore.isLogin) return
-  closeCart() // 如果沒 pin 才會關
+    if (!userStore.isLogin) return
+    closeCart() // 如果沒 pin 才會關
 }
 
 function handleClick() {
-  if (!userStore.isLogin) {
-    showModal.value = true
-    return
-  }
+    if (!userStore.isLogin) {
+        showModal.value = true
+        return
+    }
 
-  openCart()
-  pinCart() // 點擊後鎖定購物車不再自動關閉
+    openCart()
+    pinCart() // 點擊後鎖定購物車不再自動關閉
 }
 
 
 const router = useRouter()
+
+function openOrder() {
+  router.push('/orderList')
+}
 
 const token = localStorage.getItem('jwt'); // 你的 jwt 存的位置
 const payload = parseJwt(token);
@@ -225,7 +231,7 @@ async function logout() {
         console.log("登出成功", response.data);
 
         // 清除登入狀態
-        
+
 
         router.push("/"); // 回首頁或其他頁面
     } catch (error) {
